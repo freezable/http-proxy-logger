@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <a href="{{ homeLink }}">Monitor</a>
+            <h1>Projects: </h1>
+            <table>
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Target</th>
+                    <th>Monitor endpoint</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each endpoints}}
+                    <tr id="{{this.name}}">
+                        <td>{{this.name}}</td>
+                        <td>{{this.target}}</td>
+                        <td><span class="endpoint-link">{{this.endpoint}}</span></td>
+                        <td><a href="{{this.href}}">Show</a></td>
+                    </tr>
+                {{/each}}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <ul id="requests"></ul>
+        </div>
+    </div>
+</div>

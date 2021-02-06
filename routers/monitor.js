@@ -1,19 +1,26 @@
-const express = require('express')
-const router = express.Router()
-const content = require('fs').readFileSync( './public/index.html', 'utf8')
-require('dotenv').config()
+const router = require('express').Router()
 
-// Authorization
-router.use('/', (req, res, next) => {
-    if (req.query.let_me_in ===  process.env.MONITOR_AUTH_KEY) {
-        next()
-    } else {
-        res.sendStatus(401)
+module.exports = class MonitorRouter {
+
+    constructor(token, htmlFilePath) {
+        this.token = token;
+        this.htmlFilePath = htmlFilePath;
     }
-})
 
-router.get('/', (req, res, next) => {
-    res.send(content)
-})
+    get() {
+        // Authorization
+        router.use('/', (req, res, next) => {
+            if (req.query.let_me_in === this.token) {
+                next()
+            } else {
+                res.sendStatus(401)
+            }
+        })
 
-module.exports = router
+        router.get('/', (req, res, next) => {
+            res.sendFile(this.htmlFilePath);
+        })
+
+        return router;
+    }
+}

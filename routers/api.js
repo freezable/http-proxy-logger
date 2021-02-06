@@ -1,24 +1,24 @@
-const express = require('express')
-const router = express.Router()
+const router = require('express').Router()
 const {createProxyMiddleware} = require('http-proxy-middleware')
-const routerName = 'api'
-require('dotenv').config()
 
-const servers = [
-    {
-        routerEndpoint: "/oms",
-        target: process.env.OMS_TARGET_URL
+module.exports = class ApiRouter {
+
+    constructor(servers, routerName) {
+        this.servers = servers
+        this.routerName = routerName
     }
-]
 
-for (const server of servers) {
-    router.use(server.routerEndpoint, createProxyMiddleware({
-        target: server.target,
-        changeOrigin: true,
-        pathRewrite: {
-            [`^/` + routerName + server.routerEndpoint]: '',
+    get() {
+        for (const server of this.servers) {
+            router.use(server.routerEndpoint, createProxyMiddleware({
+                target: server.target,
+                changeOrigin: true,
+                pathRewrite: {
+                    [`^/` + this.routerName + server.routerEndpoint]: '',
+                }
+            }))
         }
-    }))
-}
 
-module.exports = router
+        return router;
+    }
+}

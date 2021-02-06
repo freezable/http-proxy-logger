@@ -1,8 +1,9 @@
-const express = require('express')
-const router = express.Router()
+const router = require('express').Router()
 
-router.get('/', (req, res, next) => {
-    res.sendStatus(200)
-})
-
-module.exports = router
+module.exports = class HealthRouter {
+    get(){
+        return router.get('/', (req, res, next) => {
+            res.sendStatus(200)
+        })
+    }
+}

@@ -1,17 +1,24 @@
 const express = require('express')
 const router = express.Router()
 const {createProxyMiddleware} = require('http-proxy-middleware')
-const apiEndpointName = 'api'
-const API_SERVICE_URL = "https://jsonplaceholder.typicode.com"
+const routerName = 'api'
+require('dotenv').config()
 
-// Proxy endpoints
-router.use('/json_placeholder', createProxyMiddleware({
-    target: API_SERVICE_URL,
-    changeOrigin: true,
-    pathRewrite: {
-        [`^/`+apiEndpointName+`/json_placeholder`]: '',
-    },
-}))
+const servers = [
+    {
+        routerEndpoint: "/oms",
+        target: process.env.OMS_TARGET_URL
+    }
+]
 
+for (const server of servers) {
+    router.use(server.routerEndpoint, createProxyMiddleware({
+        target: server.target,
+        changeOrigin: true,
+        pathRewrite: {
+            [`^/` + routerName + server.routerEndpoint]: '',
+        }
+    }))
+}
 
 module.exports = router

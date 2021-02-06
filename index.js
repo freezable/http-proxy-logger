@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const app = require('express')()
 const http = require('http').createServer(app)
 const io = require('socket.io')(http)
+require('dotenv').config()
 const port = process.env.PORT || 3000
 const healthStatusRouter = require('./routers/health-status')
 const monitorRouter = require('./routers/monitor')

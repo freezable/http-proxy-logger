@@ -1,16 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="/socket.io/socket.io.js"></script>
-    <title>Monitor</title>
-</head>
-<body>
 <div class="container">
     <div class="row">
         <div class="col">
             <h1>Requests: </h1>
+
+            <ul>
+                {{#each links}}
+                    <li><a href="{{this.href}}">{{this.name}}</a></li>
+                {{/each}}
+            </ul>
+
         </div>
         <div class="col">
             <ul id="requests"></ul>
@@ -25,8 +23,8 @@
     const queryString = window.location.search
     const urlParams = new URLSearchParams(queryString);
     const event = urlParams.get('event')
-        ? urlParams.get('event')
-        : 'request';
+            ? urlParams.get('event')
+            : 'request';
 
     socket.on(event, function (dump) {
         var code = document.createElement('code');
@@ -42,6 +40,3 @@
         alert('Connection to monitoring server is closed - please reload this page.')
     });
 </script>
-
-</body>
-</html>

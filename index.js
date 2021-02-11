@@ -15,6 +15,10 @@ const servers = [
         routerEndpoint: "/oms",
         target: process.env.OMS_TARGET_URL
     },
+    {
+        routerEndpoint: "/warehouse",
+        target: process.env.WAREHOUSE_TARGET_URL
+    },
 ]
 
 app.set('view engine', 'hbs')

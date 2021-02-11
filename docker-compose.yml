@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  nodejs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - MONITOR_AUTH_KEY=
+      - OMS_TARGET_URL=
+      - WAREHOUSE_TARGET_URL=
+    ports:
+      - target: 3000
+        published: 80
+        protocol: tcp

@@ -1,42 +1,34 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h1>Requests: </h1>
-
-            <ul>
-                {{#each links}}
-                    <li><a href="{{this.href}}">{{this.name}}</a></li>
+            <a href="{{ homeLink }}">Monitor</a>
+            <h1>Projects: </h1>
+            <table>
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Target</th>
+                    <th>Monitor endpoint</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#each endpoints}}
+                    <tr id="{{this.name}}">
+                        <td>{{this.name}}</td>
+                        <td>{{this.target}}</td>
+                        <td><span class="endpoint-link">{{this.endpoint}}</span></td>
+                        <td><a href="{{this.href}}">Show</a></td>
+                    </tr>
                 {{/each}}
-            </ul>
+                </tbody>
+            </table>
 
         </div>
+    </div>
+    <div class="row">
         <div class="col">
             <ul id="requests"></ul>
         </div>
     </div>
 </div>
-
-<script>
-    var socket = io();
-    var messages = document.getElementById('requests');
-
-    const queryString = window.location.search
-    const urlParams = new URLSearchParams(queryString);
-    const event = urlParams.get('event')
-            ? urlParams.get('event')
-            : 'request';
-
-    socket.on(event, function (dump) {
-        var code = document.createElement('code');
-        code.textContent = JSON.stringify(dump,undefined, 4);
-        var item = document.createElement('pre');
-        item.appendChild(code);
-        messages.appendChild(item);
-        messages.appendChild(document.createElement('hr'));
-        window.scrollTo(0, document.body.scrollHeight);
-    });
-
-    socket.on('connect_error', (error) => {
-        alert('Connection to monitoring server is closed - please reload this page.')
-    });
-</script>

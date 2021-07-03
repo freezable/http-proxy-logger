@@ -17,28 +17,28 @@ module.exports = class MonitorRouter {
             }
         })
 
-        let links = [
-            {
-                name: 'All',
-                href: '?' + new URLSearchParams({let_me_in: this.token}).toString()
-            }
-        ];
+        const endpoints = [];
 
         for (const server of this.servers) {
             let event = new URL(server.target).hostname
             const params = new URLSearchParams({
                 let_me_in: this.token,
                 event: event,
+                name: server.name
             });
-
-            links.push( {
-                name: event,
-                href: '?' + params.toString()
-            });
+            endpoints.push(
+                {
+                    name: server.name,
+                    target: server.target,
+                    endpoint: '/api' + server.routerEndpoint,
+                    href: '?' + params.toString()
+                }
+            );
         }
+        const homeLink = '?' + new URLSearchParams({let_me_in: this.token}).toString()
 
         router.get('/', (req, res, next) => {
-            res.render('main', {layout : 'index', links: links});
+            res.render('main', {layout: 'index', endpoints: endpoints, homeLink: homeLink});
         })
 
         return router;

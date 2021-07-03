@@ -3,6 +3,9 @@ const router = require('express').Router()
 module.exports = class MonitorRouter {
 
     constructor(token, servers) {
+        if (typeof token !== 'string') {
+            throw "Login token is not defined. Check .env";
+        }
         this.token = token;
         this.servers = servers;
     }
@@ -26,19 +29,17 @@ module.exports = class MonitorRouter {
                 event: event,
                 name: server.name
             });
-            endpoints.push(
-                {
-                    name: server.name,
-                    target: server.target,
-                    endpoint: '/api' + server.routerEndpoint,
-                    href: '?' + params.toString()
-                }
-            );
+            endpoints.push({
+                name: server.name,
+                target: server.target,
+                endpoint: '/api' + server.routerEndpoint,
+                href: '?' + params.toString()
+            });
         }
-        const homeLink = '?' + new URLSearchParams({let_me_in: this.token}).toString()
+        const homeLink = '?' + new URLSearchParams({ let_me_in: this.token }).toString()
 
         router.get('/', (req, res, next) => {
-            res.render('main', {layout: 'index', endpoints: endpoints, homeLink: homeLink});
+            res.render('main', { layout: 'index', endpoints: endpoints, homeLink: homeLink });
         })
 
         return router;

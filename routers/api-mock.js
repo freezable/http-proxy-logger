@@ -15,10 +15,15 @@ module.exports = class ApiMock {
             }
         })
 
-        for (let status = 100; status <= 599; status++ ){
+        for (let status = 100; status <= 599; status++) {
             let path = '/' + status + '/:optional?*';
             router.all(path, (req, res, next) => {
-                res.sendStatus(status)
+                let probability = req.query.probability ? req.query.probability : 100;
+                let responseStatus = status;
+                if (probability > Date.now() % 100) {
+                    responseStatus = req.query.status ? req.query.status : responseStatus;
+                }
+                res.sendStatus(responseStatus)
             })
         }
 

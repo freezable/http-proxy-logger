@@ -1,5 +1,5 @@
 {
-    "name": "http-bin",
+    "name": "http-proxy-logger",
     "version": "1.0.0",
     "main": "index.js",
     "author": "yehor",

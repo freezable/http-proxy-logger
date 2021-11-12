@@ -1,5 +1,9 @@
 # HTTP PROXY REQUESTS DUMPER
 
+[![Node.js CI](https://github.com/freezable/http-proxy-logger/actions/workflows/node.js.yml/badge.svg)](https://github.com/freezable/http-proxy-logger/actions/workflows/node.js.yml)
+[![CodeQL](https://github.com/freezable/http-proxy-logger/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/freezable/http-proxy-logger/actions/workflows/codeql-analysis.yml)
+
+
 this tool gives you possibility to see request and responses in real time between defined applications
 
 ## Before start

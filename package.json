@@ -5,11 +5,11 @@
     "author": "yehor",
     "license": "MIT",
     "dependencies": {
-        "dotenv": "^8.2.0",
+        "dotenv": "^10.0.0",
         "express": "^4.17.1",
-        "express-handlebars": "^5.2.0",
-        "http-proxy-middleware": "^1.0.6",
-        "socket.io": "^3.1.1",
+        "express-handlebars": "^5.3.5",
+        "http-proxy-middleware": "^2.0.1",
+        "socket.io": "^4.3.2",
         "zlib": "^1.0.5"
     },
     "scripts": {

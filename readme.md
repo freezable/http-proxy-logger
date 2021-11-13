@@ -30,3 +30,6 @@ npm run start
 - make request from sender application 
 - check data in monitor app view 
 - you also could copy info in one click 
+
+## Features: 
+- you could define status changes rate if needed. For example you want to simulate 429 response in 10% requests 

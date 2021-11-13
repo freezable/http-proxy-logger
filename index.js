@@ -25,6 +25,8 @@ app.use('/health-status', new healthStatusRouter().get())
 app.use('/monitor', new monitorRouter(process.env.MONITOR_AUTH_KEY, servers).get())
 app.use('/api', new apiRouter(servers, 'api', io).get())
 app.use('/api-mock', new apiMockRouter(process.env.HOST).get())
+app.use('/api-docs.json', express.static(__dirname + '/docs/api/swagger.json'))
+
 
 http.listen(port, () => {
     console.log(`Monitoring server running at http://localhost:${port}/`)

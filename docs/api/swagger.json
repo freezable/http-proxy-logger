@@ -1,0 +1,423 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This tool gives you possibility to see request and responses in real time between defined applications",
+    "version": "0.2.0",
+    "title": "HTTP Proxy Logger",
+    "contact": {
+      "email": "yehor.chernyshov@gmail.com"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "externalDocs": {
+    "description": "Github",
+    "url": "https://github.com/freezable/http-proxy-logger"
+  },
+  "host": "localhost:3000",
+  "tags": [
+    {
+      "name": "api",
+      "description": "Auto generated endpoints for proxy",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "github.com/freezable/http-proxy-logger#readme"
+      }
+    },
+    {
+      "name": "api-mock",
+      "description": "Dynamically mocks API responses"
+    }
+  ],
+  "schemes": [
+    "https",
+    "http"
+  ],
+  "paths": {
+    "/api-mock/{status}": {
+      "head": {
+        "tags": [
+          "api-mock"
+        ],
+        "parameters": [
+          {
+            "name": "status",
+            "in": "path",
+            "description": "Expected response status code",
+            "required": true,
+            "type": "integer",
+            "default": 200
+          },
+          {
+            "name": "payload",
+            "in": "query",
+            "description": "Expected response payload",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "alt_status",
+            "in": "query",
+            "description": "Alternative status, which will appear with defined probability",
+            "required": false,
+            "type": "integer",
+            "default": 500
+          },
+          {
+            "name": "probability",
+            "in": "query",
+            "description": "Probability to get alt Alternative status response code",
+            "required": false,
+            "type": "integer",
+            "default": 0
+          },
+          {
+            "name": "alt_payload",
+            "in": "query",
+            "description": "Expected response payload for alternative status",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "api-mock"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "status",
+            "in": "path",
+            "description": "Expected response status code",
+            "required": true,
+            "type": "integer",
+            "default": 200
+          },
+          {
+            "name": "payload",
+            "in": "query",
+            "description": "Expected response payload",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "alt_status",
+            "in": "query",
+            "description": "Alternative status, which will appear with defined probability",
+            "required": false,
+            "type": "integer",
+            "default": 500
+          },
+          {
+            "name": "probability",
+            "in": "query",
+            "description": "Probability to get alt Alternative status response code",
+            "required": false,
+            "type": "integer",
+            "default": 0
+          },
+          {
+            "name": "alt_payload",
+            "in": "query",
+            "description": "Expected response payload for alternative status",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "api-mock"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "status",
+            "in": "path",
+            "description": "Expected response status code",
+            "required": true,
+            "type": "integer",
+            "default": 200
+          },
+          {
+            "name": "payload",
+            "in": "query",
+            "description": "Expected response payload",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "alt_status",
+            "in": "query",
+            "description": "Alternative status, which will appear with defined probability",
+            "required": false,
+            "type": "integer",
+            "default": 500
+          },
+          {
+            "name": "probability",
+            "in": "query",
+            "description": "Probability to get alt Alternative status response code",
+            "required": false,
+            "type": "integer",
+            "default": 0
+          },
+          {
+            "name": "alt_payload",
+            "in": "query",
+            "description": "Expected response payload for alternative status",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "api-mock"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "status",
+            "in": "path",
+            "description": "Expected response status code",
+            "required": true,
+            "type": "integer",
+            "default": 200
+          },
+          {
+            "name": "payload",
+            "in": "query",
+            "description": "Expected response payload",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "alt_status",
+            "in": "query",
+            "description": "Alternative status, which will appear with defined probability",
+            "required": false,
+            "type": "integer",
+            "default": 500
+          },
+          {
+            "name": "probability",
+            "in": "query",
+            "description": "Probability to get alt Alternative status response code",
+            "required": false,
+            "type": "integer",
+            "default": 0
+          },
+          {
+            "name": "alt_payload",
+            "in": "query",
+            "description": "Expected response payload for alternative status",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "api-mock"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "status",
+            "in": "path",
+            "description": "Expected response status code",
+            "required": true,
+            "type": "integer",
+            "default": 200
+          },
+          {
+            "name": "payload",
+            "in": "query",
+            "description": "Expected response payload",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "alt_status",
+            "in": "query",
+            "description": "Alternative status, which will appear with defined probability",
+            "required": false,
+            "type": "integer",
+            "default": 500
+          },
+          {
+            "name": "probability",
+            "in": "query",
+            "description": "Probability to get alt Alternative status response code",
+            "required": false,
+            "type": "integer",
+            "default": 0
+          },
+          {
+            "name": "alt_payload",
+            "in": "query",
+            "description": "Expected response payload for alternative status",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "api-mock"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "status",
+            "in": "path",
+            "description": "Expected response status code",
+            "required": true,
+            "type": "integer",
+            "default": 200
+          },
+          {
+            "name": "payload",
+            "in": "query",
+            "description": "Expected response payload",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          },
+          {
+            "name": "alt_status",
+            "in": "query",
+            "description": "Alternative status, which will appear with defined probability",
+            "required": false,
+            "type": "integer",
+            "default": 500
+          },
+          {
+            "name": "probability",
+            "in": "query",
+            "description": "Probability to get alt Alternative status response code",
+            "required": false,
+            "type": "integer",
+            "default": 0
+          },
+          {
+            "name": "alt_payload",
+            "in": "query",
+            "description": "Expected response payload for alternative status",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "collectionFormat": "multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          },
+          "400": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    }
+  }
+}
